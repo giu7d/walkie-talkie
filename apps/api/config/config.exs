@@ -7,17 +7,17 @@
 # General application configuration
 import Config
 
-config :walkie_talkie_api,
-  ecto_repos: [WalkieTalkieApi.Repo]
+config :walkie_talkie,
+  ecto_repos: [WalkieTalkie.Repo]
 
 # Configures the endpoint
-config :walkie_talkie_api, WalkieTalkieApiWeb.Endpoint,
+config :walkie_talkie, WalkieTalkieWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [
-    formats: [html: WalkieTalkieApiWeb.ErrorHTML, json: WalkieTalkieApiWeb.ErrorJSON],
+    formats: [html: WalkieTalkieWeb.ErrorHTML, json: WalkieTalkieWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: WalkieTalkieApi.PubSub,
+  pubsub_server: WalkieTalkie.PubSub,
   live_view: [signing_salt: "K4/dBrsV"]
 
 # Configures the mailer
@@ -27,7 +27,7 @@ config :walkie_talkie_api, WalkieTalkieApiWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :walkie_talkie_api, WalkieTalkieApi.Mailer, adapter: Swoosh.Adapters.Local
+config :walkie_talkie, WalkieTalkie.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

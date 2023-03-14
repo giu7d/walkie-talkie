@@ -1,5 +1,5 @@
-defmodule WalkieTalkieApi.Repo do
+defmodule WalkieTalkie.Repo do
   use Ecto.Repo,
-    otp_app: :walkie_talkie_api,
+    otp_app: :walkie_talkie,
     adapter: Ecto.Adapters.Postgres
 end

@@ -1,9 +1,5 @@
-defmodule WalkieTalkieApi do
-  @moduledoc """
-  WalkieTalkieApi keeps the contexts that define your domain
-  and business logic.
+defmodule WalkieTalkie do
+  alias WalkieTalkie.Accounts
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate create_account(params), to: Accounts, as: :create_account
 end

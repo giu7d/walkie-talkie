@@ -1,4 +1,4 @@
-defmodule WalkieTalkieApiWeb.CoreComponents do
+defmodule WalkieTalkieWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -11,7 +11,7 @@ defmodule WalkieTalkieApiWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import WalkieTalkieApiWeb.Gettext
+  import WalkieTalkieWeb.Gettext
 
   @doc """
   Renders a modal.
@@ -674,9 +674,9 @@ defmodule WalkieTalkieApiWeb.CoreComponents do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(WalkieTalkieApiWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(WalkieTalkieWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(WalkieTalkieApiWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(WalkieTalkieWeb.Gettext, "errors", msg, opts)
     end
   end
 

@@ -1,9 +1,9 @@
-defmodule WalkieTalkieApi.MixProject do
+defmodule WalkieTalkie.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :walkie_talkie_api,
+      app: :walkie_talkie,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule WalkieTalkieApi.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {WalkieTalkieApi.Application, []},
+      mod: {WalkieTalkie.Application, []},
       extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end

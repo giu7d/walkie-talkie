@@ -1,4 +1,4 @@
-defmodule WalkieTalkieApi.Application do
+defmodule WalkieTalkie.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,22 +9,22 @@ defmodule WalkieTalkieApi.Application do
   def start(_type, _args) do
     children = [
       # Start the Telemetry supervisor
-      WalkieTalkieApiWeb.Telemetry,
+      WalkieTalkieWeb.Telemetry,
       # Start the Ecto repository
-      WalkieTalkieApi.Repo,
+      WalkieTalkie.Repo,
       # Start the PubSub system
-      {Phoenix.PubSub, name: WalkieTalkieApi.PubSub},
+      {Phoenix.PubSub, name: WalkieTalkie.PubSub},
       # Start Finch
-      {Finch, name: WalkieTalkieApi.Finch},
+      {Finch, name: WalkieTalkie.Finch},
       # Start the Endpoint (http/https)
-      WalkieTalkieApiWeb.Endpoint
-      # Start a worker by calling: WalkieTalkieApi.Worker.start_link(arg)
-      # {WalkieTalkieApi.Worker, arg}
+      WalkieTalkieWeb.Endpoint
+      # Start a worker by calling: WalkieTalkie.Worker.start_link(arg)
+      # {WalkieTalkie.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: WalkieTalkieApi.Supervisor]
+    opts = [strategy: :one_for_one, name: WalkieTalkie.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -32,7 +32,7 @@ defmodule WalkieTalkieApi.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    WalkieTalkieApiWeb.Endpoint.config_change(changed, removed)
+    WalkieTalkieWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

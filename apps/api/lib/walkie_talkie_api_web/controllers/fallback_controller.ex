@@ -1,5 +1,5 @@
-defmodule WalkieTalkieApiWeb.FallbackController do
-  use WalkieTalkieApiWeb, :controller
+defmodule WalkieTalkieWeb.FallbackController do
+  use WalkieTalkieWeb, :controller
 
   def call(conn, {:error, :not_found}) do
     conn

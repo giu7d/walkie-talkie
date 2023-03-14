@@ -1,12 +1,12 @@
-defmodule WalkieTalkieApiWeb do
+defmodule WalkieTalkieWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use WalkieTalkieApiWeb, :controller
-      use WalkieTalkieApiWeb, :html
+      use WalkieTalkieWeb, :controller
+      use WalkieTalkieWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,10 +40,10 @@ defmodule WalkieTalkieApiWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: WalkieTalkieApiWeb.Layouts]
+        layouts: [html: WalkieTalkieWeb.Layouts]
 
       import Plug.Conn
-      import WalkieTalkieApiWeb.Gettext
+      import WalkieTalkieWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -52,7 +52,7 @@ defmodule WalkieTalkieApiWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {WalkieTalkieApiWeb.Layouts, :app}
+        layout: {WalkieTalkieWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -84,8 +84,8 @@ defmodule WalkieTalkieApiWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import WalkieTalkieApiWeb.CoreComponents
-      import WalkieTalkieApiWeb.Gettext
+      import WalkieTalkieWeb.CoreComponents
+      import WalkieTalkieWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -98,9 +98,9 @@ defmodule WalkieTalkieApiWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: WalkieTalkieApiWeb.Endpoint,
-        router: WalkieTalkieApiWeb.Router,
-        statics: WalkieTalkieApiWeb.static_paths()
+        endpoint: WalkieTalkieWeb.Endpoint,
+        router: WalkieTalkieWeb.Router,
+        statics: WalkieTalkieWeb.static_paths()
     end
   end
 

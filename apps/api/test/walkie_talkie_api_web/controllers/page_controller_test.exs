@@ -1,5 +1,5 @@
-defmodule WalkieTalkieApiWeb.PageControllerTest do
-  use WalkieTalkieApiWeb.ConnCase
+defmodule WalkieTalkieWeb.PageControllerTest do
+  use WalkieTalkieWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

@@ -1,12 +1,12 @@
-defmodule WalkieTalkieApiWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :walkie_talkie_api
+defmodule WalkieTalkieWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :walkie_talkie
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_walkie_talkie_api_key",
+    key: "_walkie_talkie_key",
     signing_salt: "9CPplfKL",
     same_site: "Lax"
   ]
@@ -19,9 +19,9 @@ defmodule WalkieTalkieApiWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :walkie_talkie_api,
+    from: :walkie_talkie,
     gzip: false,
-    only: WalkieTalkieApiWeb.static_paths()
+    only: WalkieTalkieWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -29,7 +29,7 @@ defmodule WalkieTalkieApiWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :walkie_talkie_api
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :walkie_talkie
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
@@ -47,5 +47,5 @@ defmodule WalkieTalkieApiWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug WalkieTalkieApiWeb.Router
+  plug WalkieTalkieWeb.Router
 end

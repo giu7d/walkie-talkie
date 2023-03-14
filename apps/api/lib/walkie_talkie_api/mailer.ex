@@ -1,3 +1,3 @@
-defmodule WalkieTalkieApi.Mailer do
-  use Swoosh.Mailer, otp_app: :walkie_talkie_api
+defmodule WalkieTalkie.Mailer do
+  use Swoosh.Mailer, otp_app: :walkie_talkie
 end

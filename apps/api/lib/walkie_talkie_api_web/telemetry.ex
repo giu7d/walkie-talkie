@@ -1,4 +1,4 @@
-defmodule WalkieTalkieApiWeb.Telemetry do
+defmodule WalkieTalkieWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -52,23 +52,23 @@ defmodule WalkieTalkieApiWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("walkie_talkie_api.repo.query.total_time",
+      summary("walkie_talkie.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("walkie_talkie_api.repo.query.decode_time",
+      summary("walkie_talkie.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("walkie_talkie_api.repo.query.query_time",
+      summary("walkie_talkie.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("walkie_talkie_api.repo.query.queue_time",
+      summary("walkie_talkie.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("walkie_talkie_api.repo.query.idle_time",
+      summary("walkie_talkie.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -86,7 +86,7 @@ defmodule WalkieTalkieApiWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {WalkieTalkieApiWeb, :count_users, []}
+      # {WalkieTalkieWeb, :count_users, []}
     ]
   end
 end
