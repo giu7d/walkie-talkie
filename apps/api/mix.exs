@@ -13,9 +13,6 @@ defmodule WalkieTalkie.MixProject do
     ]
   end
 
-  # Configuration for the OTP application.
-  #
-  # Type `mix help compile.app` for more information.
   def application do
     [
       mod: {WalkieTalkie.Application, []},
@@ -23,44 +20,48 @@ defmodule WalkieTalkie.MixProject do
     ]
   end
 
-  # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
+
   defp elixirc_paths(_), do: ["lib"]
 
-  # Specifies your project dependencies.
-  #
-  # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:finch, "~> 0.13"},
+      {:floki, ">= 0.30.0", only: :test},
+      {:gettext, "~> 0.20"},
+      # Phoenix
       {:phoenix, "~> 1.7.1"},
       {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.6"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.3"},
+      {:phoenix_live_dashboard, "~> 0.7.2"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.18.16"},
-      {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.7.2"},
+      {:plug_cowboy, "~> 2.5"},
+      # Ecto
+      {:ecto_sql, "~> 3.6"},
+      {:postgrex, ">= 0.0.0"},
+      {:swoosh, "~> 1.3"},
+      # Node
       {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.1.8", runtime: Mix.env() == :dev},
-      {:swoosh, "~> 1.3"},
-      {:finch, "~> 0.13"},
+      # Membrane
+      {:membrane_core, "~> 0.11.3", override: true},
+      {:membrane_rtc_engine, "~> 0.11.0", override: true},
+      {:membrane_rtc_engine_timescaledb, "~> 0.1.0", runtime: false},
+      # Utils
+      {:jason, "~> 1.2"},
+      {:tarams, "~> 1.7.0"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      # Telemetry
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.20"},
-      {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:tarams, "~> 1.7.0"}
+      {:opentelemetry, "~> 1.0"},
+      {:opentelemetry_api, "~> 1.0"},
+      {:opentelemetry_exporter, "~> 1.0.4"},
+      {:opentelemetry_zipkin, "~> 1.0"}
     ]
   end
 
-  # Aliases are shortcuts or tasks specific to the current project.
-  # For example, to install project dependencies and perform other setup tasks, run:
-  #
-  #     $ mix setup
-  #
-  # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
       setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
