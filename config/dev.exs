@@ -22,6 +22,13 @@ config :walkie_talkie, WalkieTalkieWeb.Endpoint,
   ]
 
 config :walkie_talkie, WalkieTalkieWeb.Endpoint,
+  https: [
+    port: 4443,
+    cipher_suite: :strong,
+    otp_app: :walkie_talkie,
+    keyfile: System.get_env("SSL_KEY_PATH"),
+    certfile: System.get_env("SSL_CERT_PATH")
+  ],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",

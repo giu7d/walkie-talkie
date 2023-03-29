@@ -1,0 +1,32 @@
+FROM elixir:1.14-alpine
+
+ENV MIX_ENV="dev"
+
+# Install OS dependencies
+RUN apk add --no-cache \
+  build-base python3 make postgresql-client \
+  cmake openssl openssl-dev libsrtp-dev \
+  ffmpeg-dev clang-dev pkgconfig inotify-tools
+
+# Setup directory
+WORKDIR /usr/app
+COPY . .
+
+# Setup elixir dependencies
+RUN mix local.hex --force && \
+  mix local.rebar --force && \
+  mix deps.get && \
+  mix assets.setup && \
+  mix assets.build && \
+  mix deps.compile
+
+
+
+# Setup SSL
+RUN openssl genrsa -out priv/keys/localhost.key 2048
+RUN openssl req -new -x509 -key priv/keys/localhost.key -out priv/keys/localhost.cert -days 3650 -subj /CN=localhost
+
+# Setup docker permitions
+RUN chmod +x entrypoint.sh
+
+CMD ["make", "start-docker"]

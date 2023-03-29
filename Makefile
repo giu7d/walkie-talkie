@@ -1,16 +1,19 @@
 all: setup start
 
 setup:
-	cd apps/api && mix setup
+	mix setup
 
 start:
-	cd apps/api && mix phx.server 
+	mix phx.server 
 
 test:
-	cd apps/api && mix test
+	mix test
 
 lint:
-	cd apps/api && mix lint
+	mix lint
 
 clear:
-	cd apps/api && mix ecto.reset
+	mix ecto.reset
+
+start-docker:
+	./entrypoint.sh
