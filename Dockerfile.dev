@@ -1,12 +1,19 @@
 FROM elixir:1.14-alpine
 
-ENV MIX_ENV="dev"
-
 # Install OS dependencies
 RUN apk add --no-cache \
-  build-base python3 make postgresql-client \
-  cmake openssl openssl-dev libsrtp-dev \
-  ffmpeg-dev clang-dev pkgconfig inotify-tools
+  build-base \ 
+  inotify-tools \
+  python3  \
+  make \  
+  cmake \
+  clang-dev \
+  postgresql-client \
+  openssl \
+  openssl-dev \
+  libsrtp-dev \
+  ffmpeg-dev \
+  pkgconfig 
 
 # Setup directory
 WORKDIR /usr/app
@@ -19,8 +26,6 @@ RUN mix local.hex --force && \
   mix assets.setup && \
   mix assets.build && \
   mix deps.compile
-
-
 
 # Setup SSL
 RUN openssl genrsa -out priv/keys/localhost.key 2048
