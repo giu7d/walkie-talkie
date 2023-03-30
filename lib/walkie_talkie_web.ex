@@ -7,6 +7,10 @@ defmodule WalkieTalkieWeb do
 
       use WalkieTalkieWeb, :controller
       use WalkieTalkieWeb, :html
+      use WalkieTalkieWeb, :endpoint
+      use WalkieTalkieWeb, :router
+      use WalkieTalkieWeb, :socket
+      use WalkieTalkieWeb, :channel
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -19,6 +23,12 @@ defmodule WalkieTalkieWeb do
 
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
+  def endpoint do
+    quote do
+      use Phoenix.Endpoint, otp_app: :walkie_talkie
+    end
+  end
+
   def router do
     quote do
       use Phoenix.Router, helpers: false
@@ -27,6 +37,12 @@ defmodule WalkieTalkieWeb do
       import Plug.Conn
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+    end
+  end
+
+  def socket do
+    quote do
+      use Phoenix.Socket
     end
   end
 
